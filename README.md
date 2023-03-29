@@ -1,11 +1,11 @@
 <h1>RUN CODE</h1>
 
 <p> 
-composer install
-npm install
-cp .env.example .env
-php artisan key:generate
-php artisan migrate
+composer install <br>
+npm install<br>
+cp .env.example .env<br>
+php artisan key:generate<br>
+php artisan migrate<br>
 </p>
 
 
