@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialLoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/gotogoogle',[SocialLoginController::class, 'gotogoogle'])->name('gotogoogle');
+
+Route::get('/apigstore',[SocialLoginController::class, 'apigstore']);
+
+
 Route::get('/dashboard', function () {
     return view('chartbody');
-});
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -30,5 +30,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'google' => [
+        'client_id' => '478519621989-ar3ia577g6fassh0etk6i2lblhr59tjh.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect' => 'http://127.0.0.1:8000/apigstore',
+    ],
 
 ];

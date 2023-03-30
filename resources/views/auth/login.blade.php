@@ -73,12 +73,18 @@
                     </div>
                     <p class="small mb-0"><a href="{{ route('password.request') }}">Forgot Password?</a></p>
 
-                    {{-- <div class="col-12">
+                    <div class="col-12">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="remember" value="true" id="remember_me">
                         <label class="form-check-label" for="remember_me">Remember me</label>
                       </div>
-                    </div> --}}
+                    </div>
+                    <div class="col-12 ms-auto text-center">
+                      <a href="{{route('gotogoogle')}}" class="btn btn-warning">Login with Google</a>
+                    </div>
+                    <div class="col-12 ms-auto text-center" >
+                      <a href="" class="btn btn-warning">Login with Facebook</a>
+                    </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit">Login</button>
                     </div>
