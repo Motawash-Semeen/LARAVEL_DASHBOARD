@@ -25,17 +25,30 @@ class SocialLoginController extends Controller
             $store->email = $socialuser->email;
             $store->name = $socialuser->name;
             $store->number = $socialuser->name;
-            $store->password = Hash::make($socialuser->name);
+            $email = $socialuser->email;
 
             $store->save();
-            Auth::login($store);
+            return view('auth.setpassword' ,compact("email"));
 
-            return redirect(RouteServiceProvider::HOME);
+            // Auth::login($store);
+
+            // return redirect(RouteServiceProvider::HOME);
         }
         else{
             Auth::login($user);
 
             return redirect(RouteServiceProvider::HOME);
         }
+    }
+
+    function updatepass(Request $request, $email){
+        $user = User::where("email", $email)->first();
+        $user->password = Hash::make($request->password);
+
+        $user->update();
+
+        Auth::login($user);
+
+        return redirect(RouteServiceProvider::HOME);
     }
 }

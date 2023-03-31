@@ -28,64 +28,7 @@ Route::get('/gotogoogle',[SocialLoginController::class, 'gotogoogle'])->name('go
 
 Route::get('/apigstore',[SocialLoginController::class, 'apigstore']);
 
-
-
-
-
-//for CRUD
-
-Route::get('/dashboard/addItem', [BackendController::class, 'item']);
-
-Route::post('/dashboard/insertItem', [itemController::class, 'insert']);
-
-Route::get('/dashboard/managetItem', [itemController::class, 'show']);
-
-Route::get('/dashboard/itemActive/{id}', [itemController::class, 'itemActive']);
-
-Route::get('/dashboard/itemInactive/{id}', [itemController::class, 'itemInactive']);
-
-Route::get('/dashboard/itemDelete/{id}', [itemController::class, 'itemDelete']);
-
-Route::get('/dashboard/itemEdit/{id}', [itemController::class, 'edit']);
-
-Route::post('/dashboard/itemUpdate/{id}', [itemController::class, 'update']);
-
-
-
-Route::get('/dashboard/addCategory', [BackendController::class, 'Cate']);
-
-Route::post('/dashboard/insertCate', [cateController::class, 'insertCate']);
-
-Route::get('/dashboard/manageCategory', [cateController::class, 'showCate']);
-
-Route::get('/dashboard/activeCate/{id}', [cateController::class, 'activeCate']);
-
-Route::get('/dashboard/InactiveCate/{id}', [cateController::class, 'inactiveCate']);
-
-Route::get('/dashboard/DeleteCate/{id}', [cateController::class, 'deleteCate']);
-
-Route::get('/dashboard/EditCate/{id}', [cateController::class, 'editCate']);
-
-Route::post('/dashboard/UpdateCate/{id}', [cateController::class, 'upCate']);
-
-
-
-
-Route::get('/dashboard/addSubCategory', [BackendController::class, 'Sub_Cate']);
-
-Route::post('/dashboard/insertSubCategory', [subCateController::class, 'insert_sub']);
-
-Route::get('/dashboard/showSubCategory', [subCateController::class, 'show_sub']);
-
-Route::get('/dashboard/Activesub/{id}', [subCateController::class, 'active_sub']);
-
-Route::get('/dashboard/inActiveSub/{id}', [subCateController::class, 'inActive_sub']);
-
-Route::get('/dashboard/DeleteSub/{id}', [subCateController::class, 'delete_sub']);
-
-Route::get('/dashboard/EditSub/{id}', [subCateController::class, 'edit_sub']);
-
-Route::post('/dashboard/upSub/{id}', [subCateController::class, 'up_sub']);
+Route::post('/updatepass{email}', [SocialLoginController::class, 'updatepass'])->name('updatepass');
 
 
 
@@ -103,17 +46,71 @@ Route::post('/dashboard/upSub/{id}', [subCateController::class, 'up_sub']);
 //  });
 // });
 
-// Route::prefix('admin')->group(function () {
-//     Route::get('/users', function () {
-//         return "users";
-//     });
-//     Route::get('/dashboard', function () {
-//         return "dashboard";
-//     });
-//     Route::get('/contact', function () {
-//         return "contact";
-//     });
-// });
+Route::prefix('/dashboard')->group(function () {
+    
+Route::get('/addItem', [BackendController::class, 'item'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::post('/insertItem', [itemController::class, 'insert'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/managetItem', [itemController::class, 'show'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/itemActive/{id}', [itemController::class, 'itemActive'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/itemInactive/{id}', [itemController::class, 'itemInactive'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/itemDelete/{id}', [itemController::class, 'itemDelete'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/itemEdit/{id}', [itemController::class, 'edit'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::post('/itemUpdate/{id}', [itemController::class, 'update'])->middleware(['auth', 'verified'])->name('sub-items');
+
+
+
+
+
+//for CRUD
+
+
+
+
+Route::get('/addCategory', [BackendController::class, 'Cate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::post('/insertCate', [cateController::class, 'insertCate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/manageCategory', [cateController::class, 'showCate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/activeCate/{id}', [cateController::class, 'activeCate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/InactiveCate/{id}', [cateController::class, 'inactiveCate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/DeleteCate/{id}', [cateController::class, 'deleteCate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/EditCate/{id}', [cateController::class, 'editCate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::post('/UpdateCate/{id}', [cateController::class, 'upCate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+
+
+
+Route::get('/addSubCategory', [BackendController::class, 'Sub_Cate'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::post('/insertSubCategory', [subCateController::class, 'insert_sub'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/showSubCategory', [subCateController::class, 'show_sub'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/Activesub/{id}', [subCateController::class, 'active_sub'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/inActiveSub/{id}', [subCateController::class, 'inActive_sub'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/DeleteSub/{id}', [subCateController::class, 'delete_sub'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::get('/EditSub/{id}', [subCateController::class, 'edit_sub'])->middleware(['auth', 'verified'])->name('sub-items');
+
+Route::post('/upSub/{id}', [subCateController::class, 'up_sub'])->middleware(['auth', 'verified'])->name('sub-items');
+
+
+
+});
 
 
 
